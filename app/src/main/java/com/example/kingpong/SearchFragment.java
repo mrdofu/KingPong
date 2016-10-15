@@ -10,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.kingpong.dummy.DummyContent;
-import com.example.kingpong.dummy.DummyContent.DummyItem;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A fragment representing a list of Items.
@@ -67,7 +67,12 @@ public class SearchFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            // TODO: get list of search items from database
+            List<SearchItem> list = new ArrayList<SearchItem>();
+            for (int i = 0; i < 10; i++) {
+                list.add(new SearchItem(i, "Rick" + i, "Sanchez", getActivity().getDrawable(R.drawable.default_profile), 0));
+            }
+            recyclerView.setAdapter(new SearchRecyclerViewAdapter(list, mListener));
         }
         return view;
     }
@@ -102,6 +107,6 @@ public class SearchFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(SearchItem item);
     }
 }

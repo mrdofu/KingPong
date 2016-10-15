@@ -14,8 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.kingpong.dummy.DummyContent;
-
 public class MainActivity extends AppCompatActivity implements SearchFragment.OnListFragmentInteractionListener {
 
     /**
@@ -76,8 +74,8 @@ public class MainActivity extends AppCompatActivity implements SearchFragment.On
     }
 
     @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem listItem){
-
+    public void onListFragmentInteraction(SearchItem listItem){
+        // TODO: start activity showing profile of other person
     }
 
     /**

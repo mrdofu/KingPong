@@ -8,21 +8,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.kingpong.SearchFragment.OnListFragmentInteractionListener;
-import com.example.kingpong.dummy.DummyContent.DummyItem;
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
+ * {@link RecyclerView.Adapter} that can display a {@link SearchItem} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder> {
+public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<SearchItem> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyItemRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public SearchRecyclerViewAdapter(List<SearchItem> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -37,7 +36,8 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mNameView.setText(holder.mItem.firstName + " " + holder.mItem.lastName);
+        // TODO: load photo from backend
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +45,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
                 if (null != mListener) {
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction((DummyItem) holder.mItem);
+                    mListener.onListFragmentInteraction(holder.mItem);
                 }
             }
         });
@@ -58,20 +58,15 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final ImageView mIdView;
-        public final TextView mContentView;
-        public DummyItem mItem;
+        public final ImageView mAvatarView;
+        public final TextView mNameView;
+        public SearchItem mItem;
 
-        public ViewHolder(View view) {
-            super(view);
-            mView = view;
-            mIdView = (ImageView) view.findViewById(R.id.avatar);
-            mContentView = (TextView) view.findViewById(R.id.content);
-        }
-
-        @Override
-        public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+        public ViewHolder(View listItemView) {
+            super(listItemView);
+            mView = listItemView;
+            mAvatarView = (ImageView) listItemView.findViewById(R.id.avatar);
+            mNameView = (TextView) listItemView.findViewById(R.id.firstName);
         }
     }
 }
