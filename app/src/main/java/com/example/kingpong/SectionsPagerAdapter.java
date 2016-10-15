@@ -21,7 +21,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         // first page is search
         if (position == 0) {
-            return SearchFragment.newInstance(1);
+            return BoardFragment.newInstance(1);
         }
         return MainActivity.PlaceholderFragment.newInstance(position + 1);
     }

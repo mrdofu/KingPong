@@ -1,5 +1,6 @@
 package com.example.kingpong;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -14,7 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements SearchFragment.OnListFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements BoardFragment.OnListFragmentInteractionListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -74,8 +75,11 @@ public class MainActivity extends AppCompatActivity implements SearchFragment.On
     }
 
     @Override
-    public void onListFragmentInteraction(SearchItem listItem){
-        // TODO: start activity showing profile of other person
+    public void onListFragmentInteraction(BoardItem listItem){
+        // TODO: if phone, start activity showing profile of other person.
+        Intent intent = new Intent(this, ProfileActivity.class);
+        intent.putExtra("id", listItem.id);
+        startActivity(intent);
     }
 
     /**

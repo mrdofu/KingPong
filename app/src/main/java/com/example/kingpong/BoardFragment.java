@@ -19,7 +19,7 @@ import java.util.List;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class SearchFragment extends Fragment {
+public class BoardFragment extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -31,13 +31,13 @@ public class SearchFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public SearchFragment() {
+    public BoardFragment() {
     }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static SearchFragment newInstance(int columnCount) {
-        SearchFragment fragment = new SearchFragment();
+    public static BoardFragment newInstance(int columnCount) {
+        BoardFragment fragment = new BoardFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -56,7 +56,7 @@ public class SearchFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_search, container, false);
+        View view = inflater.inflate(R.layout.fragment_board, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -68,11 +68,11 @@ public class SearchFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
             // TODO: get list of search items from database
-            List<SearchItem> list = new ArrayList<SearchItem>();
+            List<BoardItem> list = new ArrayList<BoardItem>();
             for (int i = 0; i < 10; i++) {
-                list.add(new SearchItem(i, "Rick" + i, "Sanchez", getActivity().getDrawable(R.drawable.default_profile), 0));
+                list.add(new BoardItem(i, "Rick" + i, "Sanchez", getActivity().getDrawable(R.drawable.default_profile), 0));
             }
-            recyclerView.setAdapter(new SearchRecyclerViewAdapter(list, mListener));
+            recyclerView.setAdapter(new BoardRecyclerViewAdapter(list, mListener));
         }
         return view;
     }
@@ -107,6 +107,6 @@ public class SearchFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(SearchItem item);
+        void onListFragmentInteraction(BoardItem item);
     }
 }

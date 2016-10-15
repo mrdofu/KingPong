@@ -9,5 +9,5 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="com.example.kingpong.SearchFragment"
-    tools:listitem="@layout/viewholder_search_item" />
+    tools:context="com.example.kingpong.BoardFragment"
+    tools:listitem="@layout/viewholder_board_item" />

@@ -7,21 +7,20 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.kingpong.SearchFragment.OnListFragmentInteractionListener;
+import com.example.kingpong.BoardFragment.OnListFragmentInteractionListener;
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link SearchItem} and makes a call to the
+ * {@link RecyclerView.Adapter} that can display a {@link BoardItem} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
  */
-public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecyclerViewAdapter.ViewHolder> {
+public class BoardRecyclerViewAdapter extends RecyclerView.Adapter<BoardRecyclerViewAdapter.ViewHolder> {
 
-    private final List<SearchItem> mValues;
+    private final List<BoardItem> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public SearchRecyclerViewAdapter(List<SearchItem> items, OnListFragmentInteractionListener listener) {
+    public BoardRecyclerViewAdapter(List<BoardItem> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -29,7 +28,7 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.viewholder_search_item, parent, false);
+                .inflate(R.layout.viewholder_board_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -60,13 +59,13 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
         public final View mView;
         public final ImageView mAvatarView;
         public final TextView mNameView;
-        public SearchItem mItem;
+        public BoardItem mItem;
 
         public ViewHolder(View listItemView) {
             super(listItemView);
             mView = listItemView;
             mAvatarView = (ImageView) listItemView.findViewById(R.id.avatar);
-            mNameView = (TextView) listItemView.findViewById(R.id.firstName);
+            mNameView = (TextView) listItemView.findViewById(R.id.name);
         }
     }
 }
