@@ -19,6 +19,10 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
 
+        // first page is search
+        if (position == 0) {
+            return SearchFragment.newInstance(1);
+        }
         return MainActivity.PlaceholderFragment.newInstance(position + 1);
     }
 
