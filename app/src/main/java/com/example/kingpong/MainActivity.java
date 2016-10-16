@@ -46,11 +46,18 @@ public class MainActivity extends AppCompatActivity implements BoardFragment.OnL
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(mViewPager);
+        setupTabs();
     }
 
+    private void setupTabs(){
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(mViewPager);
+
+        int[] iconRes = {android.R.drawable.ic_menu_search, android.R.drawable.star_big_off, android.R.drawable.sym_action_chat};
+        for (int i = 0; i < tabLayout.getTabCount(); i++) {
+            tabLayout.getTabAt(i).setIcon(getDrawable(iconRes[i]));
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

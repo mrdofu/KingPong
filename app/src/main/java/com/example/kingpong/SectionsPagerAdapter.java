@@ -20,7 +20,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // Return a PlaceholderFragment (defined as a static inner class below).
 
         // first page is search
-        if (position == 0) {
+        if (position == 1) {
             return BoardFragment.newInstance(1);
         }
         return MainActivity.PlaceholderFragment.newInstance(position + 1);
@@ -34,14 +34,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        switch (position) {
-            case 0:
-                return "EXPLORE";
-            case 1:
-                return "LEADERBOARD";
-            case 2:
-                return "CHALLENGES";
-        }
         return null;
     }
 }
